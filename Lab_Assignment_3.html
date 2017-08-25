@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- Name- Aditya Agrawal, SNUID- 1410110022-->
+<html>
+	<head>
+		<title>Lab Assignment 3 Aditya Ag</title>
+		<style>
+			.lefty_side{
+				position: fixed;
+				left: 5%;			
+			}
+		</style>
+		<script>
+			function showCircle() {
+				document.getElementById("find_Ans").innerHTML = "";
+				var c=document.getElementById("Shape");
+				var ctx=c.getContext("2d");
+				ctx.clearRect(0,0,330,260);
+				ctx.beginPath();
+				ctx.arc(125,125,100,0,2*Math.PI);
+				ctx.stroke();
+				document.getElementById("draw").innerHTML = "<p>Please enter the radius:&nbsp&nbsp<input type=\"number\" id=\"radius\" value=0></p><input type=\"button\" value=\"Print Area and Perimeter\" onclick=\"Submit_Circle();\" >";
+			}
+			function Submit_Circle(){
+				var rad = document.getElementById("radius").value;
+				document.getElementById("find_Ans").innerHTML = "<p>Area of Circle:<input type=\"number\" value="+rad*rad*(22/7) +" readonly></p>Perimeter of Circle:<input type=\"number\" value="+2*(22/7)*rad+" readonly>";
+			}
+			function showTriangle() {
+				document.getElementById("find_Ans").innerHTML = "";
+				var c=document.getElementById("Shape");
+				var ctx=c.getContext("2d");
+				ctx.clearRect(0,0,330,260);
+				ctx.beginPath();
+				ctx.moveTo(25,25);
+				ctx.lineTo(25,225);
+				ctx.lineTo(225,225);
+				ctx.lineTo(25,25);
+				ctx.stroke();
+				document.getElementById("draw").innerHTML = "<p>Please enter the side 1:&nbsp&nbsp<input type=\"number\" id=\"base1\" value=0></p><p>Please enter the side 2:&nbsp&nbsp<input type=\"number\" id=\"base2\" value=0></p><p>Please enter the side 3:&nbsp&nbsp<input type=\"number\" id=\"base3\" value=0></p><input type=\"button\" value=\"Print Area and Perimeter\" onclick=\"Submit_Triangle();\" >";
+			}
+			function Submit_Triangle(){
+				var base1 = document.getElementById("base1").value;
+				var base2 = document.getElementById("base2").value;
+				var base3 = document.getElementById("base3").value;
+				var base4 = parseInt(base1)+parseInt(base2)+parseInt(base3);
+				var temp = base4/2;
+				var base5 = Math.sqrt(temp*(temp - parseInt(base1))*(temp - parseInt(base2))*(temp - parseInt(base3)));
+				document.getElementById("find_Ans").innerHTML = "<p>Area of Triangle:<input type=\"number\" value="+base5 +" readonly></p>Perimeter of Triangle:<input type=\"number\" value="+ base4+" readonly>";
+			}
+			function showSquare() {
+				document.getElementById("find_Ans").innerHTML = "";
+				var c=document.getElementById("Shape");
+				var ctx=c.getContext("2d");
+				ctx.clearRect(0,0,330,260);
+				ctx.beginPath();
+				ctx.rect(25,25,200,200);
+				ctx.stroke();
+				document.getElementById("draw").innerHTML = "<p>Please enter the side length:&nbsp&nbsp<input type=\"number\" id=\"length\" value=0></p><input type=\"button\" value=\"Print Area and Perimeter\" onclick=\"Submit_Square();\">";
+			}
+			function Submit_Square(){
+				var length = document.getElementById("length").value;
+				document.getElementById("find_Ans").innerHTML = "<p>Area of Square:<input type=\"number\" value="+ length*length +" readonly></p>Perimeter of Square:<input type=\"number\" value="+4*length+" readonly>";
+			}
+			function showRectangle() {
+				document.getElementById("find_Ans").innerHTML = "";
+				var c=document.getElementById("Shape");
+				var ctx=c.getContext("2d");
+				ctx.clearRect(0,0,330,260);
+				ctx.beginPath();
+				ctx.rect(25,25,280,200);
+				ctx.stroke();
+				document.getElementById("draw").innerHTML = "<p>Please enter the lenght:&nbsp&nbsp<input type=\"number\" id=\"side1\" value=0></p><p>Please enter the width:&nbsp&nbsp<input type=\"number\" id=\"side2\" value=0></p><input type=\"button\" value=\"Print Area and Perimeter\" onclick=\"Submit_Rectangle();\" >";	
+			}
+			function Submit_Rectangle(){
+				var base = document.getElementById("side1").value;
+				var height = document.getElementById("side2").value;
+				document.getElementById("find_Ans").innerHTML = "<p>Area of Rectangle:<input type=\"number\" value="+base*height +" readonly></p>Perimeter of Rectangle:<input type=\"number\" value="+(2*height+ 2*base) +" readonly>";	
+			}
+			function showHexagon(){
+				document.getElementById("find_Ans").innerHTML = "";
+				var c=document.getElementById("Shape");
+				var ctx=c.getContext("2d");
+				ctx.clearRect(0,0,330,260);
+				ctx.beginPath();
+				ctx.moveTo(25,75);
+				ctx.lineTo(25,181);
+				ctx.lineTo(100,256);
+				ctx.lineTo(175,181);
+				ctx.lineTo(175,75);
+				ctx.lineTo(100,0);
+				ctx.lineTo(25,75);
+				ctx.stroke();
+				document.getElementById("draw").innerHTML = "<p>Please enter the side:&nbsp&nbsp<input type=\"number\" id=\"side3\" value=0></p><input type=\"button\" value=\"Print Area and Perimeter\" onclick=\"Submit_Hexagon();\">";
+			}
+			function Submit_Hexagon(){
+				var base = document.getElementById("side3").value;
+				document.getElementById("find_Ans").innerHTML = "<p>Area of Hexagon:<input type=\"number\" value="+base*base*(5.19165/2) +" readonly></p>Perimeter of Hexagon:<input type=\"number\" value="+6*base+" readonly>";
+			}
+			function Submit_Shape(){
+				    var shape_of = document.getElementById("shapes").value;
+					document.getElementById("demo").innerHTML = "<input type=\"button\" id=\"Clickbait\" value=\"Are you Sure to see "+shape_of+"\" onclick=\"show"+shape_of+"();\">";
+					document.getElementById("Clickbait").click();
+					document.getElementById("Clickbait").style.display = "none";
+			}
+		</script>
+	</head>
+	<body class="lefty_side">
+		<p><form>
+			<select id="shapes">
+				<option value="Circle">Circle</option>
+				<option value="Triangle">Triangle</option>
+				<option value="Square">Square</option>
+				<option value="Rectangle">Rectangle</option>
+				<option value="Hexagon">Hexagon</option>
+			</select>
+		</form></p> 
+		<input type="submit" value="Submit the Shape" onclick="Submit_Shape()">
+		<input type="button" onclick="history.go(0)" value="Refresh">
+		<p id="demo"></p>
+		<canvas id="Shape" width="330" height="260"  ></canvas>
+		<p id="draw"></p>
+		<p id="find_Ans"></p>
+		
+	</body>
+</html>
