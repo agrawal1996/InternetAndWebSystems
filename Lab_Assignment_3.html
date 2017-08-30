@@ -23,6 +23,20 @@
 			function Submit_Circle(){
 				var rad = document.getElementById("radius").value;
 				document.getElementById("find_Ans").innerHTML = "<p>Area of Circle:<input type=\"number\" value="+rad*rad*(22/7) +" readonly></p>Perimeter of Circle:<input type=\"number\" value="+2*(22/7)*rad+" readonly>";
+				if(parseInt(rad)>125){
+					alert("Circle with radius less than 125 will be shown correspondingly");
+					var c=document.getElementById("Shape");
+					var ctx=c.getContext("2d");
+					ctx.clearRect(0,0,330,260);
+				}
+				else{
+					var c=document.getElementById("Shape");
+					var ctx=c.getContext("2d");
+					ctx.clearRect(0,0,330,260);
+					ctx.beginPath();
+					ctx.arc(125,125,parseInt(rad),0,2*Math.PI);
+					ctx.stroke();
+				}
 			}
 			function showTriangle() {
 				document.getElementById("find_Ans").innerHTML = "";
@@ -59,6 +73,20 @@
 			function Submit_Square(){
 				var length = document.getElementById("length").value;
 				document.getElementById("find_Ans").innerHTML = "<p>Area of Square:<input type=\"number\" value="+ length*length +" readonly></p>Perimeter of Square:<input type=\"number\" value="+4*length+" readonly>";
+				if(parseInt(length)>235){
+					alert("Square with side length less than 235 will be shown correspondingly");
+					var c=document.getElementById("Shape");
+					var ctx=c.getContext("2d");
+					ctx.clearRect(0,0,330,260);
+				}
+				else{
+					var c=document.getElementById("Shape");
+					var ctx=c.getContext("2d");
+					ctx.clearRect(0,0,330,260);
+					ctx.beginPath();
+					ctx.rect(25,25,25+parseInt(length),25+parseInt(length));
+					ctx.stroke();
+				}
 			}
 			function showRectangle() {
 				document.getElementById("find_Ans").innerHTML = "";
@@ -68,12 +96,26 @@
 				ctx.beginPath();
 				ctx.rect(25,25,280,200);
 				ctx.stroke();
-				document.getElementById("draw").innerHTML = "<p>Please enter the lenght:&nbsp&nbsp<input type=\"number\" id=\"side1\" value=0></p><p>Please enter the width:&nbsp&nbsp<input type=\"number\" id=\"side2\" value=0></p><input type=\"button\" value=\"Print Area and Perimeter\" onclick=\"Submit_Rectangle();\" >";	
+				document.getElementById("draw").innerHTML = "<p>Please enter the length:&nbsp&nbsp<input type=\"number\" id=\"side1\" value=0></p><p>Please enter the width:&nbsp&nbsp<input type=\"number\" id=\"side2\" value=0></p><input type=\"button\" value=\"Print Area and Perimeter\" onclick=\"Submit_Rectangle();\" >";	
 			}
 			function Submit_Rectangle(){
 				var base = document.getElementById("side1").value;
 				var height = document.getElementById("side2").value;
 				document.getElementById("find_Ans").innerHTML = "<p>Area of Rectangle:<input type=\"number\" value="+base*height +" readonly></p>Perimeter of Rectangle:<input type=\"number\" value="+(2*height+ 2*base) +" readonly>";	
+				if(parseInt(base)>235 || parseInt(height)>235){
+					alert("Rectangle with side length less than 235 will be shown correspondingly");
+					var c=document.getElementById("Shape");
+					var ctx=c.getContext("2d");
+					ctx.clearRect(0,0,330,260);
+				}
+				else{
+					var c=document.getElementById("Shape");
+					var ctx=c.getContext("2d");
+					ctx.clearRect(0,0,330,260);
+					ctx.beginPath();
+					ctx.rect(25,25,25+parseInt(base),25+parseInt(height));
+					ctx.stroke();
+				}
 			}
 			function showHexagon(){
 				document.getElementById("find_Ans").innerHTML = "";
@@ -94,6 +136,27 @@
 			function Submit_Hexagon(){
 				var base = document.getElementById("side3").value;
 				document.getElementById("find_Ans").innerHTML = "<p>Area of Hexagon:<input type=\"number\" value="+base*base*(5.19165/2) +" readonly></p>Perimeter of Hexagon:<input type=\"number\" value="+6*base+" readonly>";
+				if(parseInt(base)>75){
+					alert("Square with side length less than 106 will be shown correspondingly");
+					var c=document.getElementById("Shape");
+					var ctx=c.getContext("2d");
+					ctx.clearRect(0,0,330,260);
+				}
+				else{
+					var asd = parseInt(base)*1.4142
+					var c=document.getElementById("Shape");
+					var ctx=c.getContext("2d");
+					ctx.clearRect(0,0,330,260);
+					ctx.beginPath();
+					ctx.moveTo(25,parseInt(base));
+					ctx.lineTo(25,parseInt(base)+asd);
+					ctx.lineTo(25+ parseInt(base),(2*parseInt(base))+ asd);
+					ctx.lineTo(25+ (2*parseInt(base)),parseInt(base)+ asd);
+					ctx.lineTo(25+ (2*parseInt(base)),parseInt(base));
+					ctx.lineTo(25+ parseInt(base),0);
+					ctx.lineTo(25,parseInt(base));
+					ctx.stroke();
+				}
 			}
 			function Submit_Shape(){
 				    var shape_of = document.getElementById("shapes").value;
